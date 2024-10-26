@@ -89,6 +89,8 @@ with final.pkgs.lib; let
   ];
 
   extraPackages = with pkgs; [
+    fd
+    ripgrep
     # language servers, etc.
     lua-language-server
     nil # nix LSP
