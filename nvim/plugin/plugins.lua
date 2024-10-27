@@ -8,6 +8,11 @@ vim.g.did_load_plugins_plugin = true
 
 require('nvim-surround').setup()
 
+-- TEST: should be highlighted
+require('todo-comments.init').setup {
+  signs = false
+}
+
 -- LSP
 vim.opt.signcolumn = 'yes'
 
