@@ -9,9 +9,9 @@ neotree.setup {
   filesystem = {
     window = {
       mappings = {
-        ['<leader>\\'] = 'close_window',
+        ['\\'] = 'close_window',
       },
     },
   },
 }
-vim.keymap.set('n', '<leader>\\', ':Neotree reveal<CR>', { silent = true, desc = 'NeoTree reveal' })
+vim.keymap.set('n', '\\', ':Neotree reveal<CR>', { silent = true, desc = 'NeoTree reveal' })
