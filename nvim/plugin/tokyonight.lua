@@ -3,4 +3,4 @@ if vim.g.did_load_tokyonight_plugin then
 end
 vim.g.did_load_tokyonight_plugin = true
 
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme tokyonight-night]]
