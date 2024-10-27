@@ -30,11 +30,7 @@ end
 require('lualine').setup {
   globalstatus = true,
   sections = {
-    lualine_c = {
-      -- nvim-navic
-      { navic.get_location, cond = navic.is_available },
-    },
-    lualine_z = {
+   lualine_z = {
       -- (see above)
       { extra_mode_status },
     },
@@ -74,7 +70,18 @@ require('lualine').setup {
   --   lualine_z = {},
   -- },
   winbar = {
-    lualine_z = {
+     lualine_c = {
+       -- nvim-navic
+       {
+         function ()
+           return navic.get_location()
+         end,
+         cond = function ()
+           return navic.is_available()
+         end
+       },
+     },
+     lualine_z = {
       {
         'filename',
         path = 1,
