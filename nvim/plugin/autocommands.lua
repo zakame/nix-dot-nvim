@@ -5,6 +5,18 @@ vim.g.did_load_autocommands_plugin = true
 
 local api = vim.api
 
+local textonyank = api.nvim_create_augroup('kickstart-highlight-yank', { clear = true })
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = textonyank,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
 local tempdirgroup = api.nvim_create_augroup('tempdir', { clear = true })
 -- Do not set undofile for files in /tmp
 api.nvim_create_autocmd('BufWritePre', {
@@ -31,6 +43,7 @@ local function preview_location_callback(_, result)
   if result == nil or vim.tbl_isempty(result) then
     return nil
   end
+  ---@diagnostic disable-next-line: missing-parameter
   local buf, _ = vim.lsp.util.preview_location(result[1])
   if buf then
     local cur_buf = vim.api.nvim_get_current_buf()
@@ -80,7 +93,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set('n', '<space>pd', peek_definition, desc('lsp [p]eek [d]efinition'))
     keymap.set('n', '<space>pt', peek_type_definition, desc('lsp [p]eek [t]ype definition'))
     keymap.set('n', 'gi', vim.lsp.buf.implementation, desc('lsp [g]o to [i]mplementation'))
-    keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, desc('[lsp] signature help'))
+    keymap.set('n', '<M-k>', vim.lsp.buf.signature_help, desc('[lsp] signature help'))
     keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, desc('lsp add [w]orksp[a]ce folder'))
     keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, desc('lsp [w]orkspace folder [r]emove'))
     keymap.set('n', '<space>wl', function()

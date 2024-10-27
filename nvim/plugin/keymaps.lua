@@ -8,6 +8,21 @@ local fn = vim.fn
 local keymap = vim.keymap
 local diagnostic = vim.diagnostic
 
+-- Clear highlights on search when pressing <Esc> in normal mode
+keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Diagnostic keymaps
+keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Keybinds to make split navigation easier.
+--  Use CTRL+<hjkl> to switch between windows
+--
+--  See `:help wincmd` for a list of all window commands
+keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
 -- Yank from current position till end of current line
 keymap.set('n', 'Y', 'y$', { silent = true, desc = '[Y]ank to end of line' })
 
@@ -175,7 +190,7 @@ keymap.set('n', ']h', function()
 end, { noremap = true, silent = true, desc = 'next [h]int diagnostic' })
 
 local function toggle_spell_check()
-  ---@diagnostic disable-next-line: param-type-mismatch
+  ---@diagnostic disable-next-line: param-type-mismatch, undefined-field
   vim.opt.spell = not (vim.opt.spell:get())
 end
 

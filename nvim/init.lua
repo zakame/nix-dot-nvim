@@ -26,8 +26,10 @@ opt.lazyredraw = true
 opt.showmatch = true -- Highlight matching parentheses, etc
 opt.incsearch = true
 opt.hlsearch = true
+opt.ignorecase = true
+opt.smartcase = true
 
-opt.spell = true
+opt.spell = false
 opt.spelllang = 'en'
 
 opt.expandtab = true
@@ -40,7 +42,17 @@ opt.nrformats = 'bin,hex' -- 'octal'
 opt.undofile = true
 opt.splitright = true
 opt.splitbelow = true
-opt.cmdheight = 0
+-- opt.cmdheight = 0
+
+opt.updatetime = 250
+opt.timeoutlen = 300
+
+opt.list = true
+opt.listchars = [[tab:» ,trail:·,nbsp:␣]]
+
+opt.inccommand = 'split'
+
+opt.scrolloff = 10
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
@@ -94,11 +106,12 @@ vim.diagnostic.config {
 
 g.editorconfig = true
 
-vim.opt.colorcolumn = '100'
+opt.colorcolumn = '100'
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
 cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
 
 -- let sqlite.lua (which some plugins depend on) know where to find sqlite
+---@diagnostic disable-next-line: missing-parameter
 vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
