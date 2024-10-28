@@ -108,6 +108,8 @@ g.editorconfig = true
 
 opt.colorcolumn = '100'
 
+cmd.colorscheme('tokyonight-night')
+
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
 cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
