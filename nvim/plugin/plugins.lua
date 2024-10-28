@@ -8,6 +8,14 @@ vim.g.did_load_plugins_plugin = true
 
 require('nvim-surround').setup()
 
+require('fidget').setup {
+  progress = {
+    display = {
+      done_icon = '󰌶'
+    }
+  }
+}
+
 -- TEST: should be highlighted
 require('todo-comments.init').setup {
   signs = false

@@ -62,6 +62,7 @@ with final.pkgs.lib; let
     nvim-treesitter-context # nvim-treesitter-context
     neo-tree-nvim
     todo-comments-nvim
+    fidget-nvim
     # ^ UI
     # language support
     # ^ language support
