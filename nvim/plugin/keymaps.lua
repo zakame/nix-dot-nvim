@@ -126,9 +126,9 @@ keymap.set('n', '<leader>h-', function()
 end, { silent = true, desc = 'dec window [h]eight' })
 
 -- Close floating windows [Neovim 0.10 and above]
-keymap.set('n', '<leader>fq', function()
-  vim.cmd('fclose!')
-end, { silent = true, desc = '[f]loating windows: [q]uit/close all' })
+-- keymap.set('n', '<leader>fq', function()
+--   vim.cmd('fclose!')
+-- end, { silent = true, desc = '[f]loating windows: [q]uit/close all' })
 
 -- Remap Esc to switch to normal mode and Ctrl-Esc to pass Esc to terminal
 keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })

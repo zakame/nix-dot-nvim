@@ -39,12 +39,12 @@ api.nvim_create_autocmd('TermOpen', {
 -- LSP
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
-  callback = function (event)
+  callback = function(event)
     local bufnr = event.buf
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     require('nvim-navic').attach(client, bufnr)
 
-    local map = function (keys, func, desc, mode)
+    local map = function(keys, func, desc, mode)
       mode = mode or 'n'
       vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
