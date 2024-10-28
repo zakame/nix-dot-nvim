@@ -28,7 +28,6 @@ local function extra_mode_status()
 end
 
 require('lualine').setup {
-  globalstatus = true,
   sections = {
    lualine_z = {
       -- (see above)
@@ -37,6 +36,10 @@ require('lualine').setup {
   },
   options = {
     theme = 'auto',
+    globalstatus = true,
+    disabled_filetypes = {
+      winbar = { 'neo-tree' },
+    },
   },
   -- Example top tabline configuration (this may clash with other plugins)
   -- tabline = {
