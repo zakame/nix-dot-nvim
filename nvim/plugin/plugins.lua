@@ -42,11 +42,7 @@ require('lspconfig').lua_ls.setup {
           vim.env.VIMRUNTIME,
           "${3rd}/luv/library"
         }
-      }
-    })
-  end,
-  settings = {
-    Lua = {
+      },
       diagnostics = {
         -- Get the language server to recognize the `vim` global, etc.
         globals = {
@@ -60,16 +56,16 @@ require('lspconfig').lua_ls.setup {
           'duplicate-set-field',
         },
       },
-      workspace = {
-        checkThirdParty = false,
-      },
       telemetry = {
         enable = false,
       },
       hint = { -- inlay hints (supported in Neovim >= 0.10)
         enable = true,
       }
-    }
+    })
+  end,
+  settings = {
+    Lua = {}
   }
 }
 
