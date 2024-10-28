@@ -17,7 +17,7 @@ require('fidget').setup {
 }
 
 -- TEST: should be highlighted
-require('todo-comments.init').setup {
+require('todo-comments').setup {
   signs = false
 }
 
@@ -35,7 +35,7 @@ require('lspconfig').lua_ls.setup {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
-      if vim.uv.fs_stat(path..'/.luarc.json') or vim.uv.fs_stat(path..'/.luarc.jsonc') then
+      if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
         return
       end
     end
@@ -78,3 +78,29 @@ require('lspconfig').lua_ls.setup {
 }
 
 require('lspconfig').nil_ls.setup {}
+
+-- Conform
+require('conform').setup {
+  notify_on_error = false,
+  format_on_save = function(bufnr)
+    local disable_filetypes = { c = true, cpp = true }
+    local lsp_format_opt
+    if disable_filetypes[vim.bo[bufnr].filetype] then
+      lsp_format_opt = 'never'
+    else
+      lsp_format_opt = 'fallback'
+    end
+    return {
+      timeout_ns = 500,
+      lsp_format = lsp_format_opt
+    }
+  end,
+  formatters_by_ft = {
+    lua = { 'stylua' },
+    nix = { 'alejandra', 'nixfmt', stop_after_first = true },
+  }
+}
+
+vim.keymap.set('', '<leader>f', function()
+  require('conform').format { async = true, lsp_format = 'fallback' }
+end, { desc = '[F]ormat buffer' })
