@@ -109,6 +109,7 @@ g.editorconfig = true
 opt.colorcolumn = '100'
 
 cmd.colorscheme('tokyonight-night')
+cmd.hi 'Comment gui=none'
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
