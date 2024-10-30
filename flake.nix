@@ -55,6 +55,7 @@
           nil
           stylua
           luajitPackages.luacheck
+          nvim-pkg
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay
