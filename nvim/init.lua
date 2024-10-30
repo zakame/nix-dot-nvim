@@ -14,6 +14,9 @@ end
 
 -- See :h <option> to see what the options do
 
+-- Enable mouse mode
+opt.mouse = 'a'
+
 -- Search down into subfolders
 opt.path = vim.o.path .. '**'
 
