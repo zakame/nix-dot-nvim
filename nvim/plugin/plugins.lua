@@ -12,7 +12,7 @@ require('fidget').setup {}
 
 -- TEST: should be highlighted
 require('todo-comments').setup {
-  signs = false
+  signs = false,
 }
 
 -- LSP
@@ -36,14 +36,14 @@ require('lspconfig').lua_ls.setup {
 
     client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
       runtime = {
-        version = 'LuaJIT'
+        version = 'LuaJIT',
       },
       workspace = {
         checkThirdParty = false,
         library = {
           vim.env.VIMRUNTIME,
-          "${3rd}/luv/library"
-        }
+          '${3rd}/luv/library',
+        },
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global, etc.
@@ -63,12 +63,12 @@ require('lspconfig').lua_ls.setup {
       },
       hint = { -- inlay hints (supported in Neovim >= 0.10)
         enable = true,
-      }
+      },
     })
   end,
   settings = {
-    Lua = {}
-  }
+    Lua = {},
+  },
 }
 
 require('lspconfig').nil_ls.setup {}
@@ -86,13 +86,13 @@ require('conform').setup {
     end
     return {
       timeout_ns = 500,
-      lsp_format = lsp_format_opt
+      lsp_format = lsp_format_opt,
     }
   end,
   formatters_by_ft = {
     lua = { 'stylua' },
     -- nix = { 'alejandra', 'nixfmt', stop_after_first = true },
-  }
+  },
 }
 
 vim.keymap.set('', '<leader>f', function()

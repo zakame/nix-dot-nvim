@@ -23,7 +23,7 @@ api.nvim_create_autocmd('BufWritePre', {
   pattern = '/tmp/*',
   group = tempdirgroup,
   callback = function()
-    vim.cmd.setlocal('noundofile')
+    vim.cmd.setlocal 'noundofile'
   end,
 })
 
@@ -72,7 +72,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Fuzzy find all the symbols in your current workspace.
     --  Similar to document symbols, except searches over your entire project.
-    map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+    map(
+      '<leader>ws',
+      require('telescope.builtin').lsp_dynamic_workspace_symbols,
+      '[W]orkspace [S]ymbols'
+    )
 
     -- Rename the variable under your cursor.
     --  Most Language Servers support renaming across files, etc.
@@ -91,8 +95,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --    See `:help CursorHold` for information about when this is executed
     --
     -- When you move your cursor, the highlights will be cleared (the second autocommand).
-    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-      local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+    if
+      client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
+    then
+      local highlight_augroup =
+        vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
         buffer = event.buf,
         group = highlight_augroup,
@@ -123,7 +130,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
       end, '[T]oggle Inlay [H]ints')
     end
-  end
+  end,
 })
 
 -- More examples, disabled by default

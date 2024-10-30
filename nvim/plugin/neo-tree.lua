@@ -3,7 +3,7 @@ if vim.g.did_load_neotree_plugin then
 end
 vim.g.did_load_neotree_plugin = true
 
-local neotree = require('neo-tree')
+local neotree = require 'neo-tree'
 
 neotree.setup {
   filesystem = {

@@ -3,7 +3,7 @@ if vim.g.did_load_lualine_plugin then
 end
 vim.g.did_load_lualine_plugin = true
 
-local navic = require('nvim-navic')
+local navic = require 'nvim-navic'
 navic.setup {}
 
 ---Indicators for special modes,
@@ -81,7 +81,7 @@ require('lualine').setup {
         end,
         cond = function()
           return navic.is_available()
-        end
+        end,
       },
     },
     lualine_z = {

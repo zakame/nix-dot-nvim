@@ -8,7 +8,7 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 -- Enable true colour support
-if fn.has('termguicolors') then
+if fn.has 'termguicolors' then
   opt.termguicolors = true
 end
 
@@ -108,13 +108,13 @@ g.editorconfig = true
 
 opt.colorcolumn = '100'
 
-cmd.colorscheme('tokyonight-night')
+cmd.colorscheme 'tokyonight-night'
 cmd.hi 'Comment gui=none'
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
-cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
+cmd.packadd 'cfilter' -- Allows filtering the quickfix list with :cfdo
 
 -- let sqlite.lua (which some plugins depend on) know where to find sqlite
 ---@diagnostic disable-next-line: missing-parameter
-vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
+vim.g.sqlite_clib_path = require('luv').os_getenv 'LIBSQLITE'

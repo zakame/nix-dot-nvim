@@ -4,7 +4,7 @@ end
 vim.g.did_load_toggleterm_plugin = true
 
 require('toggleterm').setup {
-  open_mapping = [[<c-\>]]
+  open_mapping = [[<c-\>]],
 }
 
 function _G.set_terminal_keymaps()
@@ -18,4 +18,4 @@ function _G.set_terminal_keymaps()
   vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 end
 
-vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
+vim.cmd 'autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()'

@@ -12,7 +12,12 @@ local diagnostic = vim.diagnostic
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+keymap.set(
+  'n',
+  '<leader>q',
+  vim.diagnostic.setloclist,
+  { desc = 'Open diagnostic [Q]uickfix list' }
+)
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -137,7 +142,7 @@ keymap.set('t', '<C-Esc>', '<Esc>', { desc = 'send Esc to terminal' })
 -- Shortcut for expanding to current buffer's directory in command mode
 keymap.set('c', '%%', function()
   if fn.getcmdtype() == ':' then
-    return fn.expand('%:h') .. '/'
+    return fn.expand '%:h' .. '/'
   else
     return '%%'
   end
@@ -156,8 +161,18 @@ keymap.set('n', '<space>e', function()
   end
   vim.api.nvim_win_set_config(winid or 0, { focusable = true })
 end, { noremap = true, silent = true, desc = 'diagnostics floating window' })
-keymap.set('n', '[d', diagnostic.goto_prev, { noremap = true, silent = true, desc = 'previous [d]iagnostic' })
-keymap.set('n', ']d', diagnostic.goto_next, { noremap = true, silent = true, desc = 'next [d]iagnostic' })
+keymap.set(
+  'n',
+  '[d',
+  diagnostic.goto_prev,
+  { noremap = true, silent = true, desc = 'previous [d]iagnostic' }
+)
+keymap.set(
+  'n',
+  ']d',
+  diagnostic.goto_next,
+  { noremap = true, silent = true, desc = 'next [d]iagnostic' }
+)
 keymap.set('n', '[e', function()
   diagnostic.goto_prev {
     severity = severity.ERROR,
@@ -194,7 +209,12 @@ local function toggle_spell_check()
   vim.opt.spell = not (vim.opt.spell:get())
 end
 
-keymap.set('n', '<leader>S', toggle_spell_check, { noremap = true, silent = true, desc = 'toggle [S]pell' })
+keymap.set(
+  'n',
+  '<leader>S',
+  toggle_spell_check,
+  { noremap = true, silent = true, desc = 'toggle [S]pell' }
+)
 
 keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'move [d]own half-page and center' })
 keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move [u]p half-page and center' })
