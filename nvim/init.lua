@@ -7,8 +7,6 @@ local g = vim.g
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-opt.compatible = false
-
 -- Enable true colour support
 if fn.has('termguicolors') then
   opt.termguicolors = true
@@ -42,7 +40,6 @@ opt.nrformats = 'bin,hex' -- 'octal'
 opt.undofile = true
 opt.splitright = true
 opt.splitbelow = true
--- opt.cmdheight = 0
 
 opt.updatetime = 250
 opt.timeoutlen = 300
